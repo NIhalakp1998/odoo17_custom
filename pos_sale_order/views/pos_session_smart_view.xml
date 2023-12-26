@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <data>
+        <!--  created sale order smart button      -->
+        <record id="fleet_vehicle_smart_button" model="ir.ui.view">
+            <field name="name">fleet.view.buttons</field>
+            <field name="model">pos.session</field>
+            <field name="inherit_id" ref="point_of_sale.view_pos_session_form" />
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object" name="sale_smart" widget="statinfo"
+                        icon="fa-dollar" string="Sale Order">
+                    </button>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>

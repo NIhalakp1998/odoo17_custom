@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding = "utf-8"?>
+<odoo>
+    <data>
+        <!--   new fields added to sale order from     -->
+        <record id="sale_order_pos_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="create_from_pos"/>
+                    <field name="pos_session"/>
+                </xpath>
+            </field>
+        </record>
+        <!--  filter view added to tree view      -->
+        <record id="sale_order_pos_filter" model="ir.ui.view">
+            <field name="name">sale.order.filter</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <search>
+                <field name="create_from_pos"/>
+                <separator/>
+                    <filter string="Created From POS" name="created_from_pos" domain="[('create_from_pos', '=', 'true')]"/>
+                    <group expand="1" string="Group By">
+                    <filter string="POS Session" name="POS Session"
+                            context="{'group_by':'pos_session'}"/>
+                </group>
+            </search>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- popup created when create sale order button is clicked  -->
+    <t t-name="pos_sale_order.CreateSale">
+            <div class="popup popup-error">
+                <div class="modal-header">
+                    <h4 class="modal-title title">
+                        <t t-esc="props.title"/>
+                    </h4>
+                </div>
+                <main class="modal-body">
+                    <div class="form-group" style="display: flex; flex-direction: row; align-items: center;justify-content: center;">
+                        <label for="state">State : </label>
+                        <span><select id="state" name="state" t-ref="state">
+                            <option id="draft" name="draft" value="draft" >Draft</option>
+                            <option id="confirm" value="sale" name="confirm">Confirm</option>
+                        </select></span>
+                    </div>
+                    <br/>
+                    <div>
+                        <textarea id="w3review" name="w3review" rows="5" cols="50" placeholder="Terms and Conditions.........."/>
+                    </div>
+                </main>
+                <div class="footer modal-footer">
+                    <div class="button cancel btn btn-lg btn-primary " t-on-click="confirm_order">
+                        <t t-esc="props.confirmText"/>
+                    </div>
+                    <div class="button cancel btn btn-lg  " t-on-click="cancel">
+                        <t t-esc="props.cancelKey" />
+                    </div>
+                </div>
+            </div>
+    </t>
+
+</templates>
